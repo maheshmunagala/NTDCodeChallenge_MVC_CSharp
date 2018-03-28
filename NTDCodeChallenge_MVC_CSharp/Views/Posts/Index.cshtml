@@ -1,0 +1,77 @@
+﻿@using NTDCodeChallenge_MVC_CSharp.Models
+@model IEnumerable<PostsModels>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NTD Code Challange</title>
+</head>
+
+<body>
+
+
+
+    @using (Html.BeginForm("Index", "Posts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <hr />
+            <div>
+                <input type="file" name="postedFile" />
+                <input type="submit" value="Import & Analyze" />
+            </div>
+            <br/>
+            <div>
+                @Html.RadioButton("OutputType", "csv", true) Output in CSV format
+                @Html.RadioButton("OutputType", "json") Output in JSON format
+            </div>
+            <br />
+            <div>
+                <input id="chkDetailed" type="checkbox" name="Detailed" value="true" />
+                <label for="chkDetailed">Check this to output detailed record</label>
+            </div>
+            <hr />
+        </div>
+    }
+
+    <div>
+        <label id="result" style="color:blue;" >@TempData["Message"]</label>        
+    </div>
+    
+    @*@if (Model.Count() > 0)
+    {
+        <hr />
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Privacy</th>
+                <th>Likes</th>
+                <th>Views</th>
+                <th>Comments</th>
+                <th>Timestamp</th>
+            </tr>
+            @foreach (PostsModels posts in Model)
+            {
+                <tr>
+                    <td>@posts.id</td>
+                    <td>@posts.title</td>
+                    <td>@posts.privacy</td>
+                    <td>@posts.likes</td>
+                    <td>@posts.views</td>
+                    <td>@posts.comments</td>
+                    <td>@posts.timestamp</td>
+                </tr>
+            }
+        </table>
+    }*@
+        
+
+   
+</body>
+
+</html>
